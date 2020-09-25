@@ -67,6 +67,15 @@ gem 'rubocop', group: :development
 git add: '.'
 git commit: '-m "rubocop"'
 
+# add active_record_log task
+create_file lib/task/ar_log.rake, <<RUBY
+task ar_log: :environment do
+  ActiveRecord::Base.logger = Logger.new(STDOUT)
+end
+RUBY
+
+git add: '.'
+git commit: '-m "ar_log"'
 # Add docker-compose
 
 create_file 'docker-compose.yml', <<~DC
@@ -319,7 +328,7 @@ provision:
   - dip compose up -d postgres redis
   - dip bundle install
   - dip yarn install
-  - dip rails db:setup
+  - dip rake ar_log db:setup
 DIP
 
 git add: '.'
