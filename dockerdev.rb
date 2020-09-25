@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 git :init
 git add: '.'
 git commit: '-m "rails new"'
@@ -5,7 +6,8 @@ git commit: '-m "rails new"'
 # Change README
 puts
 say_status "README", "Changing README...\n", :yellow
-puts '-' * 80, ''; sleep 0.2
+puts '-' * 80, ''
+sleep 0.2
 
 remove_file 'README.md'
 
