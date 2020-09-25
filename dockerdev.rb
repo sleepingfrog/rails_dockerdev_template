@@ -300,7 +300,7 @@ interaction:
   psql:
     description: Run psql console
     service: postgres
-    command: psql -h postgres -U postgres -d example_app_dev
+    command: psql -h postgres -U postgres -d #{app_name}_development
 
   'redis-cli':
     description: Run Redis console
