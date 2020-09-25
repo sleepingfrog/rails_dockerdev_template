@@ -60,6 +60,13 @@ YML
 git add: '.'
 git commit: '-m "pg"'
 
+# add rubocop
+
+get 'https://raw.githubusercontent.com/sleepingfrog/rails_dockerdev_template/master/dockerdev.rb', '.rubocop.yml'
+gem 'rubocop', group: :development
+git add: '.'
+git commit: '-m "rubocop"'
+
 # Add docker-compose
 
 create_file 'docker-compose.yml', <<~DC
