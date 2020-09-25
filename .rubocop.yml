@@ -260,6 +260,8 @@ Style/MethodCallWithArgsParentheses:
   - puts
   Exclude:
   - '**/Gemfile'
+  - 'config/application.rb'
+  - 'config/environments/*'
 
 Style/MethodDefParentheses:
   EnforcedStyle: require_parentheses
