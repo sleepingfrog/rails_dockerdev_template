@@ -55,7 +55,6 @@ production:
   database: #{app_name}_production
   username: #{app_name}
   password: <%= ENV['#{app_name.upcase}_DATABASE_PASSWORD'] %>
-
 YML
 
 git add: '.'
