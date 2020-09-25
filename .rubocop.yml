@@ -2,6 +2,7 @@ AllCops:
   Exclude:
   - 'db/schema.rb'
   - 'bin/*'
+  - 'node_modules/**/*'
   DisabledByDefault: true
 
 Lint/AssignmentInCondition:
