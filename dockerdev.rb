@@ -183,7 +183,7 @@ create_file 'docker-compose.yml', <<~DC
     redis:
 DC
 
-create_file '.docker/app/Dockerfile', <<~DOCKER
+create_file '.dockerdev/app/Dockerfile', <<~DOCKER
   ARG RUBY_VERSION
   FROM ruby:$RUBY_VERSION-slim-buster
   
