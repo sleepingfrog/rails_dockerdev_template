@@ -3,6 +3,10 @@ git :init
 git add: '.'
 git commit: '-m "rails new"'
 
+run 'bundle install'
+git add: '.'
+git commit: 'bundle install'
+
 # Change README
 puts
 say_status "README", "Changing README...\n", :yellow
