@@ -338,6 +338,17 @@ DIP
 git add: '.'
 git commit: '-m "dockerdev"'
 
+# generator setting
+environment <<~RUBY
+  config.generators do |g|
+    g.assets false
+    g.halper false
+    g.test_framework false
+  end
+RUBY
+git add: '.'
+git commit: '-m "generator setting"'
+
 after_bundle do
   git add: '.'
   git commit: '-m "after bundle"'
