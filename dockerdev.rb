@@ -65,7 +65,9 @@ git commit: '-m "pg"'
 # add rubocop
 
 get 'https://raw.githubusercontent.com/sleepingfrog/rails_dockerdev_template/master/.rubocop.yml', '.rubocop.yml'
-gem 'rubocop', group: :development
+gem_group :development do
+  gem 'rubocop'
+end
 git add: '.'
 git commit: '-m "rubocop"'
 
