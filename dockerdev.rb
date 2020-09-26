@@ -72,11 +72,13 @@ git add: '.'
 git commit: '-m "rubocop"'
 
 # add active_record_log task
-create_file 'lib/tasks/ar_log.rake', <<~RUBY
-  task ar_log: :environment do
-    ActiveRecord::Base.logger = Logger.new(STDOUT)
-  end
-RUBY
+rakefile 'ar_log.rake' do
+  <<~RUBY
+    task ar_log: :environment do
+      ActiveRecord::Base.logger = Logger.new(STDOUT)
+    end
+  RUBY
+end
 
 git add: '.'
 git commit: '-m "ar_log"'
