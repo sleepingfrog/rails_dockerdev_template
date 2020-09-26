@@ -335,6 +335,13 @@ environment(<<~RUBY)
 RUBY
 commit_all.call('generators')
 
+# annotate
+gem_group :development do
+  gem 'annotate'
+end
+run('bundle install')
+commit_all.call('annotate')
+
 after_bundle do
   commit_all.call('after bundle')
 end
