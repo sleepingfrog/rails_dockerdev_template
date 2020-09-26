@@ -1,18 +1,15 @@
 # frozen_string_literal: true
-git :init
-git add: '.'
-git commit: '-m "rails new"'
+commit_all = proc { |message|
+  git(add: '.')
+  git(commit: "-m '#{message}'")
+}
+git(:init)
+commit_all.call('rails new')
 
-run 'bundle install'
-git add: '.'
-git commit: 'bundle install'
+run('bundle install')
+commit_all.call('bundle install')
 
 # Change README
-puts
-say_status "README", "Changing README...\n", :yellow
-puts '-' * 80, ''
-sleep 0.2
-
 remove_file 'README.md'
 
 create_file 'README.md', <<~README
