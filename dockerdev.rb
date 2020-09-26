@@ -96,7 +96,7 @@ create_file 'docker-compose.yml', <<~DC
     environment: &env
       NODE_ENV: development
       RAILS_ENV: ${RAILS_ENV:-development}
-    image: es_sample
+    image: #{app_name}_sample
     tmpfs:
       - /tmp
   
