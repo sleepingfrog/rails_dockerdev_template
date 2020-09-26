@@ -338,6 +338,14 @@ gem('annotate', group: :development)
 run('bundle install')
 commit_all.call('annotate')
 
+# marginalia
+gem('marginalia')
+run('bundle install')
+initializer('marginalia.rb', <<~RUBY)
+  Marginalia::Comment.components = %i(application controller_with_namespace action job)
+RUBY
+commit_all.call('marginalia')
+
 after_bundle do
   commit_all.call('after bundle')
 end
