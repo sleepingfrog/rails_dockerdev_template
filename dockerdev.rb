@@ -59,9 +59,7 @@ commit_all.call('postgres')
 
 # add rubocop
 get('https://raw.githubusercontent.com/sleepingfrog/rails_dockerdev_template/master/.rubocop.yml', '.rubocop.yml')
-gem_group :development do
-  gem 'rubocop'
-end
+gem('rubocop', group: :development)
 run('bundle install')
 commit_all.call('rubocop')
 
@@ -336,9 +334,7 @@ RUBY
 commit_all.call('generators')
 
 # annotate
-gem_group :development do
-  gem 'annotate'
-end
+gem('annotate', group: :development)
 run('bundle install')
 commit_all.call('annotate')
 
