@@ -66,6 +66,7 @@ commit_all.call('rubocop')
 # add active_record_log task
 rakefile 'ar_log.rake' do
   <<~RUBY
+    # forozen_string_literal: true
     task ar_log: :environment do
       ActiveRecord::Base.logger = Logger.new(STDOUT)
     end
@@ -342,6 +343,7 @@ commit_all.call('annotate')
 gem('marginalia')
 run('bundle install')
 initializer('marginalia.rb', <<~RUBY)
+  # frozen_string_literal: true
   Marginalia::Comment.components = %i(application controller_with_namespace action job)
 RUBY
 commit_all.call('marginalia')
