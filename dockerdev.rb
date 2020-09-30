@@ -337,6 +337,7 @@ commit_all.call('generators')
 # annotate
 gem('annotate', group: :development)
 run('bundle install')
+rails_command('generate annotate:install')
 commit_all.call('annotate')
 
 # marginalia
