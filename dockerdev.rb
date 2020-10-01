@@ -263,6 +263,7 @@ module Dockerdev
             interval: 1s
             timeout: 3s
             retries: 30
+
       volumes:
         bundle:
         node_modules:
