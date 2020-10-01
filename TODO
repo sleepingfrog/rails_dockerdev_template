@@ -1,0 +1,7 @@
+case @options['database']
+when 'postgresql'
+when 'mysql'
+when 'sqlite3'
+end
+
+ココらへんでなんかする
