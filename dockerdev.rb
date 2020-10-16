@@ -177,7 +177,7 @@ module Dockerdev
           context: .
           dockerfile: ./.dockerdev/app/Dockerfile
           args:
-            RUBY_VERSION: '2.7.1'
+            RUBY_VERSION: '2.7.2'
             PG_MAJOR: '12'
             NODE_MAJOR: '12'
             YARN_VERSION: '1.22.5'
