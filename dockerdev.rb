@@ -57,7 +57,7 @@ module Dockerdev
           command: bundle exec rails
           subcommands:
             s:
-              description: Run Rails server available at http://localhost:3030
+              description: Run Rails server available at http://localhost:3000
               service: rails
               compose:
                 run_options: [service-ports, use-aliases]
