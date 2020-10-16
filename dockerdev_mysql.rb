@@ -300,9 +300,9 @@ create_file('dip.yml', <<~DIP)
       compose_run_options: [no-deps]
 
     mysql:
-      description: Run psql console
+      description: Run mysql
       service: mysql
-      command: mysql -h mysql -U mysql -d #{app_name}_development
+      command: mysql -h mysql -u root -U #{app_name}_development -p
 
     'redis-cli':
       description: Run Redis console
