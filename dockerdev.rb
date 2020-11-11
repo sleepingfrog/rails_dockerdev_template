@@ -226,6 +226,7 @@ module Dockerdev
 
         postgres:
           image: postgres:12
+          command: postgres -c log_statement=all
           volumes:
             - postgres:/var/lib/postgresql/data
             - ./log:/root/log:cached
