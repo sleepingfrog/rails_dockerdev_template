@@ -239,7 +239,7 @@ module Dockerdev
             test: pg_isready -U postgres -h 127.0.0.1
             interval: 5s
 
-        webpacker:
+        webpack:
           <<: *backend
           command: bundle exec ./bin/webpack-dev-server
           ports:
