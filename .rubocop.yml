@@ -86,12 +86,6 @@ Layout/CaseIndentation:
   IndentOneStep: false
   IndentationWidth:
 
-Style/ClassAndModuleChildren:
-  EnforcedStyle: nested
-  SupportedStyles:
-  - nested
-  - compact
-
 Style/ClassCheck:
   EnforcedStyle: is_a?
   SupportedStyles:
