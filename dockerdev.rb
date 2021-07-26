@@ -286,7 +286,16 @@ class BuildMyRails
   end
 
   def initial_commit
-    commit_all('rails new')
+    message = 'rails new'
+    message += "\n\n"
+    message += "---options---\n"
+    @options.each do |k, v|
+      next if k.to_s == "ruby"
+      message += "#{k}: #{v}\n"
+    end
+    message += "---options---"
+
+    commit_all(message)
   end
 
   def readme
