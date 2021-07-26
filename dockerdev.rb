@@ -207,8 +207,10 @@ module Dockerdev
           HISTFILE: /app/log/.bash_history
           PSQL_HISTFILE: /app/log/.psql_history
           EDITOR: vi
+          REDIS_URL: redis://redis:6379
         depends_on:
           - postgres
+          - redis
 
       services:
         runner:
@@ -265,6 +267,10 @@ module Dockerdev
             timeout: 3s
             retries: 30
 
+        sidekiq:
+          <<: *backend
+          command: bundle exec sidekiq -C config/sidekiq.yml
+
       volumes:
         bundle:
         node_modules:
@@ -273,6 +279,14 @@ module Dockerdev
         rails_cache:
         redis:
     DC
+  end
+
+  def _dockerdev_sidekiq_yml
+    <<~YML
+      :concurrency: 5
+      :queue:
+        - default
+    YML
   end
 end
 
@@ -368,6 +382,7 @@ class BuildMyRails
     @generator.create_file('docker-compose.yml', _docker_compose_yml)
     @generator.create_file('.dockerdev/app/Dockerfile', _dockerdev_dockerfile)
     @generator.create_file('.dockerdev/app/Aptfile', _dockerdev_apt_file)
+    @generator.create_file('config/sidekiq.yml', _dockerdev_sidekiq_yml)
 
     @generator.gsub_file('config/database.yml', /^default:.*?\n{2}/m, <<~YML)
       default: &default
@@ -377,6 +392,21 @@ class BuildMyRails
         url: <%= ENV['DATABASE_URL'] %>
 
       YML
+
+    @generator.gem('sidekiq')
+    @generator.run('bundle install')
+
+    @generator.environment(<<~RUBY)
+      config.active_job.queue_adapter = :sidekiq
+    RUBY
+
+    @generator.route(<<~ROUTE)
+      if Rails.env.development?
+        require("sidekiq/web")
+        mount Sidekiq::Web => "/sidekiq"
+      end
+    ROUTE
+
     commit_all('dockerdev')
   end
 end
