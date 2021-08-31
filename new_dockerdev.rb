@@ -412,10 +412,20 @@ module Dockerdev
   end
 end
 
+module AddAnnotate
+  def add_annotate
+    @generator.gem("annotate", group: :development)
+    @generator.run("bundle install")
+    @generator.rails_command("generate annotate:install")
+    commit_all("add annotate")
+  end
+end
+
 class BuildMyRails
   include MyCommand
   include AddMarginalia
   include Dockerdev
+  include AddAnnotate
 
   attr_reader :generator, :app_name, :options
   def initialize(generator, app_name, options)
@@ -430,6 +440,7 @@ bmr.initial_commit
 bmr.readme
 bmr.add_marginalia
 bmr.dockerdev
+bmr.add_annotate
 
 after_bundle do
   git add: '.'
