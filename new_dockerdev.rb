@@ -56,7 +56,7 @@ module Dockerdev
     @generator.gem('sidekiq')
     @generator.create_file('config/sidekiq.yml', <<~SIDEKIQ)
       :concurrency: 5
-      :queue:
+      :queues:
         - default
     SIDEKIQ
     @generator.run('bundle install')
