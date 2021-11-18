@@ -430,7 +430,7 @@ class BuildMyRails
   attr_reader :generator, :app_name, :options
   def initialize(generator, app_name, options)
     @generator = generator
-    @app_name = app_name
+    @app_name = app_name.downcase
     @options = options
   end
 end
