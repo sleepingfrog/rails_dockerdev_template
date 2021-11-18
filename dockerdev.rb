@@ -46,6 +46,8 @@ module AddMarginalia
   end
 end
 
+# TODO: --skip-active_job, --minimal なんかが来たときのsidekiqの扱い
+
 module Dockerdev
   def dockerdev
     t = Template.new(app_name, @options)
